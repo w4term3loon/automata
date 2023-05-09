@@ -11,11 +11,11 @@ To build the program, run `make all`. This will create an executable file named 
 
 To run the program, use the following command:
 
-'''
+```
 ./automata [-s <size>] [-r <rule>] [-i <iterations>]
-'''
+```
 
-- `-s <size>`: Sets the size of the grid. The default value is 100.
+- `-s <size>`: Sets the size of the grid. The default value is 512.
 - `-r <rule>`: Specifies the rule set to use. The default is "Conway's Game of Life".
 - `-i <iterations>`: Specifies the number of generations to run. The default is 100.
 
