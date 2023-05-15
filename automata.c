@@ -157,7 +157,8 @@ int main(int argc, char **argv){
 
     save_field_to_ppm("life.ppm", automata);
     automata_destructor(automata);
-
+    free(automata);
+    
     return 0;
 }
 

@@ -1,6 +1,6 @@
 CC := clang
 
-SRCS := life.c
+SRCS := automata.c
 OBJS := $(SRCS:.c=.o)
 EXEC := automata
 HDRS := include/*.h

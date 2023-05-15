@@ -81,7 +81,9 @@ Automata *automata_constructor(const uint16_t rows, const uint16_t cols, const b
 
 void automata_destructor(Automata *automata){
     field_destructor(automata -> field);
+    free(automata -> field);
     key_destructor(automata -> key);
+    free(automata -> key);
     automata = NULL;
 }
 
