@@ -13,6 +13,8 @@
 #include "include/key.h"
 #include "include/automata.h"
 
+#include "SDL2/SDL.h"
+
 uint16_t SIZE = 512;
 enum Key_type RULE = conway;
 uint16_t ITERATIONS = 100;
