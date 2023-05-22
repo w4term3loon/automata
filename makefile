@@ -1,10 +1,10 @@
-CC := clang
+bCC := clang
 SRCS := automata.c
 OBJS := $(SRCS:.c=.o)
 EXEC := automata
 HDRS := include/*.h
-CFLAGS := -I/Library/Frameworks/SDL2.framework/Headers 
-LDFLAGS := -F/Library/Frameworks -framework SDL2
+CFLAGS := $(shell sdl2-config --cflags)
+LDFLAGS := $(shell sdl2-config --libs)
 
 .PHONY: all clean rebuild
 
