@@ -85,6 +85,17 @@ bool plant_seed(Field *field){
     return 1;
 }
 
+void usage() {
+    printf( "usage: [-s <size>] [-r <rule>] [-i <iterations>] [-a] [-p]\n\
+ -s\tset the size of the field, default is 512\n\
+ -r\tset the rule of life, default is conway\n\
+ -i\tset iterations before save, default is 100\n\
+ -a\tshow animation of life, hold Q to step\n\
+ -p\tsave last generation to .ppm image\n\
+caution: if -a (animation flag) is enabled iterations loses meaning\n");
+    exit(1);
+}
+
 enum Key_type set_rule(const char *flag){
     switch (flag[0]) {
         case 'c':
@@ -110,8 +121,9 @@ enum Key_type set_rule(const char *flag){
             }
             break;
         default:
-            printf("ERROR: invalid rule type: %s\n", flag);
-            exit(1);
+            fprintf(stderr, "ERROR: invalid rule type: %s\n", flag);
+            usage(); // exits here
+            return conway; // shut up warning
     }
 }
 
@@ -136,11 +148,11 @@ int main(int argc, char **argv){
 #if 1
     assert(argv[0] != NULL);
 
-    if (argc >= 9){
-        printf("ERROR: not valid arguments, usage: -s <size> -r <rule> -i <iterations> [-a] [-s]\n -s\tsave last generation to .ppm image\n -a\tshow animation of life, hold Q to step\n");
-        exit(1);
+    if (9 < argc) {
+        fprintf(stderr, "ERROR: too many arguments\n");
+        usage();
     }
-
+    
     uint8_t flagcount = 0;
     const char size_flag[] = "-s";
     const char type_flag[] = "-r";
@@ -151,14 +163,17 @@ int main(int argc, char **argv){
     for (unsigned int i = 1; i < argc; ++i){
         if (strcmp(argv[i], size_flag) == 0){
             SIZE = atoi(argv[i + 1]);
+            ++i;
             flagcount += 1;
         }
         else if (strcmp(argv[i], type_flag) == 0){
             RULE = set_rule(argv[i + 1]);
+            ++i;
             flagcount += 1;
         }
         else if (strcmp(argv[i], iter_flag) == 0){
             ITER = atoi(argv[i + 1]);
+            ++i;
             flagcount += 1;
         }
         else if (strcmp(argv[i], anim_flag) == 0){
@@ -171,10 +186,10 @@ int main(int argc, char **argv){
         }
     }
 
-    // if (flagcount != 3){
-    //    printf("ERROR: not valid arguments, usage: -s <size> -r <rule> -i <iterations> [-a] [-s]\n -s\tsave last generation to .ppm image\n -a\tshow animation of life, hold Q to step\n");
-    //    exit(1);
-    //}
+    if (5 < flagcount) {
+        fprintf(stderr, "ERROR: too many flags provided\n");
+        usage();
+    }
 
 #endif
     SDL_Window* window;
@@ -225,6 +240,7 @@ int main(int argc, char **argv){
     }
     
     if (PPM) { save_field_to_ppm("life.ppm", automata); }
+
     automata_destructor(automata);
     free(automata);
     
@@ -234,4 +250,4 @@ int main(int argc, char **argv){
 // TODO: implement random into the noise generation
 // TODO: ppm compression so that it takes up less space
 // TODO: all errorhandling
-// TODO: usage message correction
+// TODO: different behaviour on different areas of the field

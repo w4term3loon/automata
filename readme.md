@@ -12,7 +12,7 @@ To build the program, run `make all`. This will create an executable file named 
 To run the program, use the following command:
 
 ```
-./automata -s <size> -r <rule> -i <iterations> [-a] [-p]
+./automata [-s <size>] [-r <rule>] [-i <iterations>] [-a] [-p]
 ```
 
 - `-s <size>`: Sets the size of the grid. The default value is 512.
@@ -21,7 +21,13 @@ To run the program, use the following command:
 - `-a`: simulate in SDL, generate new generation with 'Q' key
 - `-p`: save last generation to a .ppm file
 
-After running the program it will iterate through all generations and provide you with the outcome and with the noise that was configured at the start, both as a .ppm file. You can not modify the noise, only if you tweak the code, because it would have made the running a bit cloudy with all the optional settings. I also recommend you to simulate the "Seeds" cellular automata with the plant_seed() function, because that is where it really shines. I did not account for all error cases, so make sure you use the correct flags.
+The following is a valid command that simulates the maze life in SDL and saves the last generation to a .ppm file:
+
+```
+./automata -s 748 -r maze -a -p
+```
+
+You can not modify the [noise](noise.jpg), only if you tweak the code, because it would have made the running a bit cloudy with all the optional settings. I also recommend you to simulate the "Seeds" cellular automata with the plant_seed() function, because that is where it really shines. I did not account for all error cases, so make sure you use the correct flags.
 
 ## Rule Sets
 

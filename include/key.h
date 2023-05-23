@@ -66,22 +66,22 @@ Key *key_constructor(const enum Key_type type){
                 key -> n_states = 3;
                 key -> law = alloc_law(key -> n_states);
                 key -> law[0][2] = 1;
-                key -> law[1][0] = 1;
-                key -> law[1][1] = 1;
-                key -> law[1][2] = 1;
-                key -> law[1][3] = 1;
-                key -> law[1][4] = 1;
-                key -> law[1][5] = 1;
-                key -> law[1][6] = 1;
-                key -> law[1][7] = 1;
-                key -> law[1][8] = 1;
+                key -> law[1][0] = 2;
+                key -> law[1][1] = 2;
+                key -> law[1][2] = 2;
+                key -> law[1][3] = 2;
+                key -> law[1][4] = 2;
+                key -> law[1][5] = 2;
+                key -> law[1][6] = 2;
+                key -> law[1][7] = 2;
+                key -> law[1][8] = 2;
                 break;
 
             case high:
                 key -> n_states = 2;
                 key -> law = alloc_law(key -> n_states);
                 key -> law[0][3] = 1;
-                key -> law[0][3] = 1;
+                key -> law[0][6] = 1;
                 key -> law[1][2] = 1;
                 key -> law[1][3] = 1;
                 break;
