@@ -27,7 +27,7 @@ The following is a valid command that simulates the maze life in SDL and saves t
 ./automata -s 748 -r maze -a -p
 ```
 
-You can not modify the [noise](noise.jpg), only if you tweak the code, because it would have made the running a bit cloudy with all the optional settings. I also recommend you to simulate the "Seeds" cellular automata with the plant_seed() function, because that is where it really shines. I did not account for all error cases, so make sure you use the correct flags.
+You can not modify the [noise](noise.jpeg), only if you tweak the code, because it would have made the running a bit cloudy with all the optional settings. I also recommend you to simulate the "Seeds" cellular automata with the plant_seed() function, because that is where it really shines. I did not account for all error cases, so make sure you use the correct flags.
 
 ## Rule Sets
 
