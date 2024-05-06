@@ -1,4 +1,4 @@
-bCC := clang
+CC := clang
 SRCS := automata.c
 OBJS := $(SRCS:.c=.o)
 EXEC := automata
